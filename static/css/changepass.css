@@ -1,0 +1,25 @@
+body {
+    background-color: lightskyblue;
+    
+}
+
+.colr {
+    width: 500px;;
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+}
+
+input {
+    width: 100%;
+    padding:12px 20px;
+    margin:8px 0;
+    box-sizing: border-box;
+    border-radius: 1px;
+}
+
+h3 {
+    margin-top: 100px;
+}

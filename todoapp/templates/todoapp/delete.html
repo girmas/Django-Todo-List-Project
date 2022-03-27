@@ -1,0 +1,14 @@
+{% block content %}
+<p>Are You Sure You want Delete "{{task}}" ?</p>
+
+<a href="{{request.META.HTTP_REFERER}}">Cancel</a>
+<form action="" method="POST">
+   {% csrf_token %}
+  
+
+    <input type="submit" value="Confirm">
+
+</form>
+
+
+{% endblock content %}

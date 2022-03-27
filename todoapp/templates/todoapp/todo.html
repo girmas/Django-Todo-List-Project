@@ -1,0 +1,21 @@
+{% extends 'todoapp/base.html' %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+<h3 class="text-center">Todo Task</h3>
+<form action="" method='POST' class="center-col">
+{% csrf_token %}
+{{form|crispy}}
+<input type="submit" value="Confirm">
+{% for todos in todo %}
+<div class="item-row">
+    {{todos.title}}
+<a href="{% url 'updatetask' todos.id %}" class="btn btn-sm btn-primary">Edit</a>
+<a href="{% url 'deletetask' todos.id %}" class="btn btn-sm btn-danger">Delete</a>
+</div>
+
+{% endfor %}
+</form>
+
+<link rel="stylesheet" href="{% static 'css/todostyle2.css' %}">
+{% endblock content %}
