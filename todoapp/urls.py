@@ -9,7 +9,8 @@ urlpatterns = [
      path('logout',views.logout_user,name='logout'),
      path('delete_task/<str:pk>',views.delete_task,name='deletetask'),
      path('update_task/<str:pk>',views.update_task,name='updatetask'),
-     path('change_password',views.change_password,name='changepass')
+     path('change_password',views.change_password,name='changepass'),
+     path('change_pass',views.changepass,name='changep')
      
      
      

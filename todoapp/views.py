@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm , AuthenticationForm,PasswordChangeForm
 from todoapp.forms import TodoForm
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     return render(request,'todoapp/home.html')
@@ -41,6 +42,7 @@ def login_user(request):
         
     return render(request,'todoapp/login.html',{'form':form})
 
+@login_required(login_url='login')
 def todotask(request):
     form = TodoForm()
     if request.method == 'POST':
@@ -58,15 +60,18 @@ def todotask(request):
 
 def logout_user(request):
     auth.logout(request)
-    return redirect('login')
+    return redirect('home')
 
+
+@login_required(login_url='login')
 def delete_task(request,pk):
     task = Todo.objects.get(id=pk)
     if request.method == 'POST':
         task.delete()
         return redirect('todo')
     return render(request,'todoapp/delete.html',{'task':task})
-    
+
+@login_required(login_url='login')
 def update_task(request,pk):
     task = Todo.objects.get(id=pk)
     form = TodoForm(instance=task)
@@ -77,7 +82,7 @@ def update_task(request,pk):
            return redirect('todo')
     return render(request,'todoapp/update.html',{'task':task,'form':form})
 
-
+@login_required(login_url='login')
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -88,8 +93,14 @@ def change_password(request):
             return redirect('login')
         else :
             messages.error(request,"something went wrong")
+            
+            
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'todoapp/changepassword.html',{'form':form})
     
-    
+
+
+def changepass(request):
+    return render(request,'todoapp/changepassword.html')
+   

@@ -1,4 +1,5 @@
 {% extends 'todoapp/base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="background-color: aqua;">
+<body>
     {% block content %}
-    <h3 class="text-center mt-5">Todo Page Project</h3>
-    <h4 class="text-center">Sign Up And Make Every Day Todo List Activites</h4>
+    <marquee behavior="" direction=""><h1 class="text-center mt-5" id="one">Todo Page Project</h1></marquee>
+   <h1 class="text-center">Sign Up And Make Every Day Todo List Activites Here</h1>
+    <link rel="stylesheet" href="{% static 'css/stylehomee.css' %}">
     {% endblock content %}
 </body>
 </html>
